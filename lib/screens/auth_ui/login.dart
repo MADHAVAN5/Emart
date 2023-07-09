@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/primary_button/primary_button.dart';
-import '../widgets/top_titles/top_titles.dart';
+import '../../constants/routes.dart';
+import '../../widgets/primary_button/primary_button.dart';
+import '../../widgets/top_titles/top_titles.dart';
+import 'signup.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<Login> createState() => _LoginState();
 }
 
-class _SignUpState extends State<SignUp> {
-  bool isShowPassword = true;
-  TextEditingController password = TextEditingController();
+class _LoginState extends State<Login> {
   TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
 
-  TextEditingController name = TextEditingController();
-  TextEditingController phone = TextEditingController();
+  bool isShowPassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,43 +28,16 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TopTitles(
-                  subtitle: "Welcome Back To E Commerce App",
-                  title: "Create Account"),
+                  subtitle: "Welcome Back To E Commerce App", title: "Login"),
               const SizedBox(
                 height: 46.0,
               ),
               TextFormField(
-                controller: name,
-                decoration: const InputDecoration(
-                  hintText: "Name",
-                  prefixIcon: Icon(
-                    Icons.person_outline,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              TextFormField(
                 controller: email,
-                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   hintText: "E-mail",
                   prefixIcon: Icon(
                     Icons.email_outlined,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              TextFormField(
-                controller: phone,
-                keyboardType: TextInputType.phone,
-                decoration: const InputDecoration(
-                  hintText: "Phone",
-                  prefixIcon: Icon(
-                    Icons.phone_outlined,
                   ),
                 ),
               ),
@@ -86,8 +59,10 @@ class _SignUpState extends State<SignUp> {
                         });
                       },
                       padding: EdgeInsets.zero,
-                      child: const Icon(
-                        Icons.visibility,
+                      child: Icon(
+                        isShowPassword
+                            ? Icons.visibility
+                            : Icons.visibility_off,
                         color: Colors.grey,
                       )),
                 ),
@@ -96,23 +71,24 @@ class _SignUpState extends State<SignUp> {
                 height: 36.0,
               ),
               PrimaryButton(
-                title: "Create an account",
+                title: "Login",
                 onPressed: () {},
               ),
               const SizedBox(
                 height: 24.0,
               ),
-              const Center(child: Text("I have already an account?")),
+              const Center(child: Text("Don't have an account?")),
               const SizedBox(
                 height: 12.0,
               ),
               Center(
                 child: CupertinoButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Routes.instance
+                        .push(widget: const SignUp(), context: context);
                   },
                   child: Text(
-                    "Login",
+                    "Create an account",
                     style: TextStyle(color: Theme.of(context).primaryColor),
                   ),
                 ),

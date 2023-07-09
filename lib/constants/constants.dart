@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -106,6 +107,9 @@ bool signUpVaildation(
     return false;
   } else if (password.isEmpty) {
     showMessage("Password is Empty");
+    return false;
+  } else if (!EmailValidator.validate(email)) {
+    showMessage('Email not valid');
     return false;
   } else {
     return true;

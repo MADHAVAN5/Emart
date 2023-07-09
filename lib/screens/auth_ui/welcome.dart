@@ -1,8 +1,9 @@
+import 'package:emart/screens/auth_ui/login.dart';
 import 'package:flutter/material.dart';
-import '../constants/asset_images.dart';
-import '../constants/routes.dart';
-import '../widgets/primary_button/primary_button.dart';
-import '../widgets/top_titles/top_titles.dart';
+import '../../constants/asset_images.dart';
+import '../../constants/routes.dart';
+import '../../widgets/primary_button/primary_button.dart';
+import '../../widgets/top_titles/top_titles.dart';
 import 'signup.dart';
 
 class Welcome extends StatelessWidget {
@@ -53,7 +54,9 @@ class Welcome extends StatelessWidget {
             ),
             PrimaryButton(
               title: "Login",
-              onPressed: () {},
+              onPressed: () {
+                Routes.instance.push(widget: const Login(), context: context);
+              },
             ),
             const SizedBox(
               height: 18.0,
