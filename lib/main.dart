@@ -1,3 +1,4 @@
+import 'package:emart/auth_ui/welcome.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/theme.dart';
@@ -15,7 +16,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Emart',
       theme: themeData,
-      home: const Text('welcome'),
+      home: const Welcome(),
+      //  home: StreamBuilder(
+      //     stream: FirebaseAuthHelper.instance.getAuthChange,
+      //     builder: (context, snapshot) {
+      //       if (snapshot.hasData) {
+      //         return const CustomBottomBar();
+      //       }
+      //       return const Welcome();
+      //     },
+      //   ),
     );
   }
 }
