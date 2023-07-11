@@ -1,6 +1,8 @@
+import 'package:emart/services/auth_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/constants.dart';
 import '../../constants/routes.dart';
 import '../../widgets/primary_button/primary_button.dart';
 import '../../widgets/top_titles/top_titles.dart';
@@ -72,7 +74,18 @@ class _LoginState extends State<Login> {
               ),
               PrimaryButton(
                 title: "Login",
-                onPressed: () {},
+                onPressed: () async {
+                  bool isVaildated = loginVaildation(email.text, password.text);
+                  if (isVaildated) {
+                    bool isLogined = await AuthHelper.instance
+                        .login(email.text, password.text, context);
+                    if (isLogined) {
+                      // ignore: use_build_context_synchronously
+                      Routes.instance.pushAndRemoveUntil(
+                          widget: const Text('welcome'), context: context);
+                    }
+                  }
+                },
               ),
               const SizedBox(
                 height: 24.0,

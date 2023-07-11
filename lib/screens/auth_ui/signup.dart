@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
 import '../../constants/routes.dart';
+import '../../services/auth_helper.dart';
 import '../../widgets/primary_button/primary_button.dart';
 import '../../widgets/top_titles/top_titles.dart';
 
@@ -20,6 +21,7 @@ class _SignUpState extends State<SignUp> {
 
   TextEditingController name = TextEditingController();
   TextEditingController phone = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,16 +105,14 @@ class _SignUpState extends State<SignUp> {
                   bool isVaildated = signUpVaildation(
                       email.text, password.text, name.text, phone.text);
                   if (isVaildated) {
-                    // name.text, email.text, password.text, context
-                    // print(name.text);
-                    // print(email.text);
-                    // print(phone.text);
-                    // print(password.text);
-                    // print(context);
-                    // if (isLogined) {
-                    //   // Routes.instance.pushAndRemoveUntil(
-                    //   //     widget: const CustomBottomBar(), context: context);
-                    // }
+                    bool isLogined = await AuthHelper.instance.signUp(name.text,
+                        password.text, phone.text, email.text, context);
+                    if (isLogined) {
+                      print('hello');
+                      // ignore: use_build_context_synchronously
+                      Routes.instance.pushAndRemoveUntil(
+                          widget: const Text('hello'), context: context);
+                    }
                   }
                 },
               ),
