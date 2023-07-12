@@ -1,3 +1,4 @@
+import 'package:emart/services/store_helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -33,8 +34,7 @@ class _HomeState extends State<Home> {
     setState(() {
       isLoading = true;
     });
-    // FirebaseFirestoreHelper.instance.updateTokenFromFirebase();
-    // categoriesList = await FirebaseFirestoreHelper.instance.getCategories();
+    categoriesList = await StoreHelper.instance.getCategories();
     // productModelList = await FirebaseFirestoreHelper.instance.getBestProducts();
 
     productModelList.shuffle();

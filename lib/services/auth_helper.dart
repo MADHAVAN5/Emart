@@ -41,3 +41,7 @@ class AuthHelper {
     return resData['status'];
   }
 }
+
+void signOut() async {
+  await SessionManager().destroy();
+}

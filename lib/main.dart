@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Emart',
       theme: themeData,
-      home: const Welcome(),
+      home: const Home(),
     );
   }
 }
