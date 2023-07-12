@@ -38,6 +38,8 @@ dependencies:
   fluttertoast: ^8.2.2
   email_validator: ^2.1.17
   http: ^1.1.0
+  flutter_session_manager: ^1.0.3
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_test:

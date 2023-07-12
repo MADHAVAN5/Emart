@@ -1,4 +1,6 @@
+// import 'package:emart/screens/auth_ui/welcome.dart';
 import 'package:emart/screens/auth_ui/welcome.dart';
+import 'package:emart/screens/home.dart';
 import 'package:flutter/material.dart';
 
 import 'constants/theme.dart';
